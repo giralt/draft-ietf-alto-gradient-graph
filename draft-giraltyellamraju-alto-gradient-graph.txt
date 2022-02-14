@@ -2,13 +2,13 @@
 
 
 
-WG Working Group                                               Y.N. Here
-Internet-Draft                                    Your Organization Here
-Intended status: Informational                           3 February 2022
-Expires: 7 August 2022
+ALTO                                                       J. Ros-Giralt
+Internet-Draft                                             S. Yellamraju
+Intended status: Informational                                  Qualcomm
+Expires: 18 August 2022                                 14 February 2022
 
 
-               An ALTO Extension: Gradient Graph Service
+                 ALTO Extension: Gradient Graph Service
            draft-giraltyellamraju-alto-gradient-graph-latest
 
 Abstract
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 August 2022.
+   This Internet-Draft will expire on 18 August 2022.
 
 Copyright Notice
 
@@ -66,11 +66,22 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Security Considerations
-   4.  IANA Considerations
-   5.  Normative References
+   3.  Brief Introductions to Bottleneck Structures
+   4.  Use Cases
+   5.  Requirements
+   6.  Gradient Graph Extension: Overview
+   7.  Specification: Basic Data Types
+   8.  Specification: Service Extensions
+   9.  Compatibility with Other ALTO Services and Extensions
+   10. General Discussions
+   11. Examples
+   12. Security Considerations
+   13. IANA Considerations
+   14. References
+     14.1.  Normative References
+     14.2.  Informative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -84,15 +95,53 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Security Considerations
+3.  Brief Introductions to Bottleneck Structures
 
-   TODO Security
+   TODO
 
-4.  IANA Considerations
+4.  Use Cases
 
-   This document has no IANA actions.
+   TODO
 
-5.  Normative References
+5.  Requirements
+
+   TODO
+
+6.  Gradient Graph Extension: Overview
+
+   TODO
+
+7.  Specification: Basic Data Types
+
+   TODO
+
+8.  Specification: Service Extensions
+
+   TODO
+
+9.  Compatibility with Other ALTO Services and Extensions
+
+   TODO
+
+10.  General Discussions
+
+   TODO
+
+11.  Examples
+
+   TODO
+
+12.  Security Considerations
+
+   TODO
+
+13.  IANA Considerations
+
+   TODO
+
+14.  References
+
+14.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -103,13 +152,24 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
+14.2.  Informative References
+
+   [G2-SMETRICS]
+              Ros-Giralt, J., "XXX", n.d..
+
 Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
-   Your Name Here
-   Your Organization Here
+   Jordi Ros-Giralt
+   Qualcomm
 
-   Email: your.email@example.com
+   Email: jros@qti.qualcomm.com
+
+
+   Sruthi Yellamraju
+   Qualcomm
+
+   Email: yellamra@qti.qualcomm.com
