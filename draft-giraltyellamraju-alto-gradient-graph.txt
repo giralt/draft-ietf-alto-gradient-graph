@@ -5,7 +5,7 @@
 ALTO                                                       J. Ros-Giralt
 Internet-Draft                                             S. Yellamraju
 Intended status: Informational                                  Qualcomm
-Expires: 3 September 2022                                   2 March 2022
+Expires: 4 September 2022                                   3 March 2022
 
 
         ALTO Extension: Bottleneck Structure Graph (BSG) Service
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 September 2022.
+   This Internet-Draft will expire on 4 September 2022.
 
 Copyright Notice
 
@@ -402,8 +402,8 @@ Table of Contents
    bandwidth allocation property that all bottleneck structures satisfy:
 
    *  *Property 3.  Monotonic bandwidth allocation (MBA).* Let si be the
-      transmission rate of a flow fj that is bottlenecked at link li.
-      Then, for any path in the bottleneck structure of the form
+      transmission rate of the flows bottlenecked at link li.  Then, for
+      any path in the bottleneck structure of the form
 
         l1 -> f1 -> l2 -> f2 -> (...) -> ln -> fn
 
@@ -885,7 +885,7 @@ Table of Contents
 
        Figure 5: Bootleneck structure of Google's B4 network example.
 
-   For the sake of compactness, Figure 5 includes only the bottleneck
+   For the sake of compactness, Figure 5 only includes the bottleneck
    links and a subset of the flow vertices that are part of the complete
    bottleneck structure.  In particular, out of the 19 links that are
    part of B4, six links (l15, l7, l8, l10, l5, l3) are bottlenecks.
@@ -920,26 +920,26 @@ Table of Contents
    often used as the default option.  Doing so, however, implies that
    the flow will be bottlenecked at link l15 at the upper level of the
    bottleneck structure, leading to a lower transmission rate.  If
-   instead we choose the non-shortest path DC11 -> l19 -> dc10 -> l8 ->
+   instead we choose the non-shortest path DC11 -> l19 -> DC10 -> l8 ->
    DC8 -> l16 -> DC4, now the flow will be bottlenecked at link l8 (at
    the lower level of the bottlenech structure), leading to a higher
    transmission rate.
 
    Using QTBS, we can also numerically compute the transmission rate of
-   the flow on each of the two path options.  In particular, we obtain
-   that when the application chooses the shortest path (bottlenecked at
-   level 1 of the bottleneck structure), it gets a transmission rate of
-   1.429 Gbps.  If instead the application chooses the slightly longer
-   path (bottlenecked at level 2 of the bottleneck structure), then it
-   gets a transmission rate of 2.5 Gbps, an increase of 74.95% with
-   respect to the shortest path solution.  (See Section 3.1 in [G2-TREP]
-   for a detail description of how to compute the transmission rate
-   assigned to the flow on each of these paths.)
+   the flow on each of the two path options.  (See Section 3.1 in
+   [G2-TREP] for a detailed description of how to compute the
+   transmission rate assigned to the flow on each of these paths.)  In
+   particular, we obtain that when the application chooses the shortest
+   path (bottlenecked at level 1 of the bottleneck structure), it gets a
+   transmission rate of 1.429 Gbps.  If instead the application chooses
+   the slightly longer path (bottlenecked at level 2 of the bottleneck
+   structure), then it gets a transmission rate of 2.5 Gbps, an increase
+   of 74.95% with respect to the shortest path solution.
 
    [G2-TREP] introduces also a very efficient routing algorithm that
    uses the bottleneck structure to find the maximal throughput path for
-   a flow in O(V + E * log(V)) steps, where V is the number of routers
-   and E is the number of links in the network.
+   a flow in O(V+E*log(V)) steps, where V is the number of routers and E
+   is the number of links in the network.
 
    Overall, this example illustrates that, equipped with knowledge about
    the bottleneck structure of a network, an application can make better
@@ -986,31 +986,32 @@ Table of Contents
 
    *  Requirement 1B (R1B).  The ALTO server MUST support the
       computation of at least one bottleneck structure type from
-      Section 3.7.
+      Section 3.7.  It is also RECOMMENDED that the ALTO server
+      implements at least the path gradient graph (PGG).
 
 5.3.  Requirement 2: Information Received from the Network
 
-   To compute the bottleneck structures, two pieces of information are
+   To compute a bottleneck structure, two pieces of information are
    required:
 
-   *  Topology (T) Object.  The T Object is a data structure that
+   *  Topology Object (T).  The T Object is a data structure that
       includes:
 
       (1) A Topology Graph (V, E), where V is the set of routers and E
       is the set of links connecting the routers in the network.
 
-      (2) A Capacity (C) Dictionary, mapping each link identifier with
-      the capacity (in bps) of the link.
+      (2) A Capacity Dictionary (C), a key-value table mapping each link
+      with its capacity (in bps).
 
-   *  Flow (F) Dictionary.  The F Dictionary is a key-value table that
-      maps a flow identifier with the set of links traversed by the
-      flow.
+   *  Flow Dictionary (F).  The F Dictionary is a key-value table
+      mapping every flow with the set of links it traverses.
 
    As shown in [G2-TREP], the above information is enough to compute the
    bottleneck structure.  In fact, with only the F and C dictionaries,
-   one can compute the bottleneck structure.  The topology graph is
-   needed to perform optimal routing computations (for instance, to find
-   new paths in the network that yield higher throughput).
+   one can compute the bottleneck structure.  The topology graph (V, E)
+   is needed to perform optimal routing computations (for instance, to
+   find new paths in the network that yield higher throughput, as
+   illustrated in Section 5.1).
 
    The above discussion leads to the following requirement:
 
@@ -1021,11 +1022,12 @@ Table of Contents
 
    Information about the set of routers, links and link capacity is
    typically available from protocols and technologies such as SNMP,
-   BGP-LS, SDN, or domain specific topology files.  This information is
-   enough to construct the T Object.
-
-   Information about the set of links traversed by each flow can be
-   obtained from protocols such as NetFlow, sFlow, IPFIX, etc.
+   BGP-LS, SDN, or domain specific topology logs.  This information is
+   enough to construct the T Object.  Information about the set of links
+   traversed by each flow can be obtained from protocols such as
+   NetFlow, sFlow, IPFIX, etc.  See [FLOWDIR] and [G2-SC] for examples
+   of how requirement R2A is implemented in real-world production
+   networks.
 
 5.4.  Requirement 3: Information Passed to the Application
 
@@ -1035,10 +1037,6 @@ Table of Contents
    *  Requirement 3A (R3A).  The ALTO client MUST be able to query the
       ALTO server to obtain the current bottleneck structure of the
       network, represented as a digraph.
-
-   *  Requirement 3B (R3B).  The ALTO client MUST be able to query the
-      ALTO server to obtain the effect of a network reconfiguration (see
-      Section 3.9).
 
    In addition, the current ALTO services can be extended with
    additional information obtained from the bottleneck structure:
@@ -1063,17 +1061,18 @@ Table of Contents
    helping applications optimize their performance for each of the
    supported use cases.
 
-   Requirement 4A (R4A).  The ALTO BSG service MUST be able to compute
-   the effect of network reconfigurations using bottleneck structure
-   analysis and according to the types described in Section 3.9.
+   *  Requirement 4A (R4A).  The ALTO BSG service MUST be able to
+      compute the effect of network reconfigurations using bottleneck
+      structure analysis and according to the types described in
+      Section 3.9.
 
-   For example, an extended reality application might need to choose
-   where to place a containerized instance of the XR service among a set
-   of possible server racks located in various edge cloud locations.
-   The application would query the ALTO BSG service to obtain the
-   projected performance results of placing the new service instance on
-   each possible location, allowing it to select the one that would
-   yield the highest performance.  (See also Section XXX.)
+   For example, an extended reality (XR) application might need to
+   choose where to place a containerized instance of the XR service
+   among a set of possible server racks located in various edge cloud
+   locations.  The application would query the ALTO BSG service to
+   obtain the projected performance results of placing the new service
+   instance on each possible location, allowing it to select the one
+   that would yield the highest performance.
 
    The following requirement is necessary to ensure that the information
    provided by the BSG service is not stale:
@@ -1083,10 +1082,10 @@ Table of Contents
    or less.
 
    In [G2-SC] it is shown that bottleneck structures can be computed in
-   a fraction of a session for a production US wide network with 28
-   routers and 78 links (XXX update with 2021 data set).  Thus, the
-   above requirement should be achievable with a good implementation of
-   the bottleneck structure algorithm [G2-TREP].
+   a fraction of a session for a production US wide network with about
+   100 routers and 500 links.  Thus, the above requirement should be
+   achievable with a good implementation of the bottleneck structure
+   algorithm [G2-TREP].
 
 6.  Bottleneck Structure Graph Extension: Overview
 
@@ -1158,18 +1157,29 @@ Table of Contents
               "BwE: Flexible, Hierarchical Bandwidth Allocation for WAN
               Distributed Computing", ACM SIGCOMM , 2015.
 
-   [G2-SC]    Ros-Giralt, J., "Computing Bottleneck Structures at Scale
-              for High-Precision Network Performance Analysis", IEEE
+   [FLOWDIR]  Enric Pujol, Ingmar Poese, Johannes Zerwas, Georgios
+              Smaragdakis, and Anja Feldmann, "Steering Hyper-Giants’
+              Traffic at Scale", ACM CoNEXT , 2019.
+
+   [G2-SC]    Noah Amsel, Jordi Ros-Giralt, Sruthi Yellamraju etc,
+              "Computing Bottleneck Structures at Scale for High-
+              Precision Network Performance Analysis", IEEE
               International Workshop on Innovating the Network for Data
               Intensive Science (INDIS), Supercomputing , n.d..
 
    [G2-SIGCOMM]
-              Ros-Giralt, J., "XXX", ACM SIGCOMM , n.d..
+              Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc, J.,
+              "Designing data center networks using bottleneck
+              structures", ACM SIGCOMM , n.d..
 
    [G2-SIGMETRICS]
-              Ros-Giralt, J., "XXX", ACM SIGMETRICS , n.d..
+              Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc, J., "On the
+              Bottleneck Structure of Congestion-Controlled Networks",
+              ACM SIGMETRICS , n.d..
 
-   [G2-TREP]  Ros-Giralt, J., "XXX", n.d..
+   [G2-TREP]  Ros-Giralt, Noah Amsel, Sruthi Yellamraju etc, J., "A
+              Quantitative Theory of Bottleneck Structures for Data
+              Networks", n.d..
 
    [GALLAGER] Robert Gallager and Dimitri Bertsekas, "Data Networks",
               n.d..
