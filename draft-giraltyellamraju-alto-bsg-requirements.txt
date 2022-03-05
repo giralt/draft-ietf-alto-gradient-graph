@@ -5,7 +5,7 @@
 ALTO                                                       J. Ros-Giralt
 Internet-Draft                                             S. Yellamraju
 Intended status: Informational                                  Qualcomm
-Expires: 5 September 2022                                   4 March 2022
+Expires: 6 September 2022                                   5 March 2022
 
 
      Supporting Bottleneck Structure Graphs in ALTO: Use Cases and
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2022.
+   This Internet-Draft will expire on 6 September 2022.
 
 Copyright Notice
 
@@ -164,7 +164,7 @@ Table of Contents
    structure by assuming that flows in a network aim at maximizing
    throughput while ensuring fairness.  This general principle holds for
    all the relevant congestion control algorithms used in IP networks
-   (e.g., TCP Cubic, BBR, Quic, etc.).
+   (e.g., TCP Cubic, BBR, QUIC, etc.).
 
 3.1.  Example of Bottleneck Structure
 
@@ -261,7 +261,15 @@ Table of Contents
    For instance, in Figure 2 we have that flow f3 is bottlenecked at
    link l1 (since there is a directed edge from l1 to f3) and it
    traverses links l1 and l2 (since there is a directed edge from f3 to
-   l1 and from f3 to l2).
+   l1 and from f3 to l2).  Note that when a flow is bottlenecked at a
+   link, then the edge connecting them in the bottleneck structure must
+   necessarily be bidirectional.  This is because a flow that is
+   bottlenecked at a link, must necessarily traverse that link too.
+   Indeed, in Figure 2 we can see that all the directed edges from a
+   link to a flow, are in fact bidirectional edges.  This is important
+   to ensure that bottleneck structures correctly model how
+   perturbations in a network propagate, as we explain in the next
+   section.
 
 3.2.  Propagation Lemmas
 
@@ -868,10 +876,10 @@ Table of Contents
 4.5.  Service Placement for Edge Computing
 
    Determining the proper location to deploy an application service in
-   the edge cloud is critical in order to ensure a good quality of
-   experience (QoE) for its users.  Yet the service placement problem is
-   known to be NP-Hard [JSP-INFOCOM], requiring heuristics to compute
-   good (albeit suboptimal) solutions.
+   the edge cloud is critical to ensure a good quality of experience
+   (QoE) for its users.  Yet the service placement problem is known to
+   be NP-Hard [JSP-INFOCOM], requiring heuristics to compute good
+   (albeit suboptimal) solutions.
 
    In [G2-SIGCOMM], it is shown that Bottleneck structures can also be
    used as highly scalable network simulators to evaluate the
@@ -974,9 +982,10 @@ Table of Contents
    and DC8-DC10), which are configured at 25 Gbps.
 
    The next Figure presents the bottleneck structure of Google's B4
-   network with the assumed flow configuration.  (See [G2-SC], [G2-TREP]
-   for details on the algorithm used to compute the bottleneck
-   structure.)
+   network with the assumed flow configuration.  Please see Section 3.1
+   for a description of how to interpret the bottleneck structure.  (See
+   also [G2-SC], [G2-TREP] for details on the algorithm used to compute
+   the bottleneck structure.)
 
       +--------+    +--------+
       |        |    |        |
