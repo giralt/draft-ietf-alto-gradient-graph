@@ -5,7 +5,7 @@
 ALTO                                                       J. Ros-Giralt
 Internet-Draft                                             S. Yellamraju
 Intended status: Informational                                  Qualcomm
-Expires: 6 September 2022                                   5 March 2022
+Expires: 7 September 2022                                   6 March 2022
 
 
      Supporting Bottleneck Structure Graphs in ALTO: Use Cases and
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 September 2022.
+   This Internet-Draft will expire on 7 September 2022.
 
 Copyright Notice
 
@@ -94,29 +94,29 @@ Table of Contents
      4.2.  Time-bound Constrained Flow Acceleration for Large Data Set
            Transfers
      4.3.  Application Performance Optimization Through AI Modeling
-     4.4.  Optimal Joint Congestion Control and Routing
+     4.4.  Optimal Joint Routing and Congestion Control
      4.5.  Service Placement for Edge Computing
      4.6.  Training Gigantic Neural Networks onto Data Centers and
            Planet-Scale Networks
      4.7.  5G Network Slicing
-   5.  Requirements
-     5.1.  Example of Network-Aware Application using the Bottleneck
-           Structure Graph
-     5.2.  Requirement 1: Bottleneck Structure Graph (BSG) Abstraction
-     5.3.  Requirement 2: Information Received from the Network
-     5.4.  Requirement 3: Information Passed to the Application
-     5.5.  Requirement 4: Features Needed to Support the Use Cases
-   6.  Bottleneck Structure Graph Extension: Overview
-   7.  Specification: Basic Data Types
-   8.  Specification: Service Extensions
-   9.  Compatibility with Other ALTO Services and Extensions
-   10. General Discussions
-   11. Examples
-   12. Security Considerations
-   13. IANA Considerations
-   14. References
-     14.1.  Normative References
-     14.2.  Informative References
+   5.  Example of Application Layer Traffic Optimization using
+           Bottleneck Structures
+   6.  Requirements
+     6.1.  Requirement 1: Bottleneck Structure Graph (BSG) Abstraction
+     6.2.  Requirement 2: Information Received from the Network
+     6.3.  Requirement 3: Information Passed to the Application
+     6.4.  Requirement 4: Features Needed to Support the Use Cases
+   7.  Bottleneck Structure Graph Extension: Overview
+   8.  Specification: Basic Data Types
+   9.  Specification: Service Extensions
+   10. Compatibility with Other ALTO Services and Extensions
+   11. General Discussions
+   12. Examples
+   13. Security Considerations
+   14. IANA Considerations
+   15. References
+     15.1.  Normative References
+     15.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -831,7 +831,7 @@ Table of Contents
    The application would then query the ALTO server to obtain the
    predicted value.
 
-4.4.  Optimal Joint Congestion Control and Routing
+4.4.  Optimal Joint Routing and Congestion Control
 
    In traditional IP networks, the problems of flow routing and
    congestion control are separately resolved by following a two-step
@@ -941,15 +941,18 @@ Table of Contents
 
    TOBECOMPLETED
 
-5.  Requirements
+5.  Example of Application Layer Traffic Optimization using Bottleneck
+    Structures
 
-   This section starts with an illustrative example of how an
-   application can benefit from the BSG service defined in this
-   document.  From this example, we then provide a discussion on the
-   requirements to integrate the BSG service into the ALTO standard.
-
-5.1.  Example of Network-Aware Application using the Bottleneck
-      Structure Graph
+   In this section we provide an example illustrating how bottleneck
+   structures can be used to optimize application performance.  This
+   example will then be referenced in Section 6 to discuss and introduce
+   the necessary requirements to integrate the BSG service into the ALTO
+   standard.  It is worth noticing that, as shown in Section 4,
+   bottleneck structures have numerous applications.  This section
+   provides a complete example for just one of the use cases.  In
+   particular, the focus of the next example is on the joint routing and
+   congestion control use case Section 4.4.
 
    Figure 4 provides a view of Google's B4 network as presented in
    [B4-SIGCOMM], providing connectivity to twelve data centers
@@ -1099,7 +1102,12 @@ Table of Contents
    integrating the Bottleneck Structure Graph (BSG) service into the
    ALTO standard.
 
-5.2.  Requirement 1: Bottleneck Structure Graph (BSG) Abstraction
+6.  Requirements
+
+   This section provides a discussion on the necessary requirements to
+   integrate the BSG service into the ALTO standard.
+
+6.1.  Requirement 1: Bottleneck Structure Graph (BSG) Abstraction
 
    The first base requirement consists in extending the ALTO server with
    the capability to compute bottleneck structures.  For instance, with
@@ -1145,7 +1153,7 @@ Table of Contents
       the path gradient graph (PGG) as the default bottleneck structure
       implementation for retrieval by the ALTO clients.
 
-5.3.  Requirement 2: Information Received from the Network
+6.2.  Requirement 2: Information Received from the Network
 
    To compute a bottleneck structure, two pieces of information are
    required:
@@ -1167,7 +1175,7 @@ Table of Contents
    one can compute the bottleneck structure.  The topology graph (V, E)
    is needed to perform optimal routing computations (for instance, to
    find new paths in the network that yield higher throughput, as
-   illustrated in Section 5.1).
+   illustrated in Section 5).
 
    The above discussion leads to the following requirement:
 
@@ -1185,7 +1193,7 @@ Table of Contents
    of how requirement R2A is implemented in real-world production
    networks.
 
-5.4.  Requirement 3: Information Passed to the Application
+6.3.  Requirement 3: Information Passed to the Application
 
    The following requirement is necessary so that applications can
    optimize their performance using bottleneck structure information:
@@ -1207,7 +1215,7 @@ Table of Contents
    cost metric that corresponds to the estimated available bandwidth
    between two endpoints according to the bottleneck structure model.
 
-5.5.  Requirement 4: Features Needed to Support the Use Cases
+6.4.  Requirement 4: Features Needed to Support the Use Cases
 
    Bottleneck structures offer a rich framework to optimize application
    performance for a variety of use cases.  In addition to the base
@@ -1243,41 +1251,41 @@ Table of Contents
    achievable with a good implementation of the bottleneck structure
    algorithm [G2-TREP].
 
-6.  Bottleneck Structure Graph Extension: Overview
+7.  Bottleneck Structure Graph Extension: Overview
 
    TODO
 
-7.  Specification: Basic Data Types
+8.  Specification: Basic Data Types
 
    TODO
 
-8.  Specification: Service Extensions
+9.  Specification: Service Extensions
 
    TODO
 
-9.  Compatibility with Other ALTO Services and Extensions
+10.  Compatibility with Other ALTO Services and Extensions
 
    TODO
 
-10.  General Discussions
+11.  General Discussions
 
    TODO
 
-11.  Examples
+12.  Examples
 
    TODO
 
-12.  Security Considerations
+13.  Security Considerations
 
    TODO
 
-13.  IANA Considerations
+14.  IANA Considerations
 
    TODO
 
-14.  References
+15.  References
 
-14.1.  Normative References
+15.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1304,7 +1312,7 @@ Table of Contents
               Cost Calendar", RFC 8896, DOI 10.17487/RFC8896, November
               2020, <https://www.rfc-editor.org/rfc/rfc8896>.
 
-14.2.  Informative References
+15.2.  Informative References
 
    [B4-SIGCOMM]
               "B4: Experience with a Globally-Deployed Software Defined
