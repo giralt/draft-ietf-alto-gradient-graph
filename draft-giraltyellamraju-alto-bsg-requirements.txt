@@ -23,16 +23,15 @@ Expires: 8 September 2022                                          Q. Wu
 Abstract
 
    This document proposes an extension to the base Application-Layer
-   Traffic Optimization (ALTO) protocol [RFC7285] to support bottleneck
-   structures as an efficient representation of the state of a network.
-   Bottleneck structures are efficient computational graphs that allow
-   network operators and application service providers to optimize
-   application performance in a variety of communication problems
-   including routing, flow control, flow scheduling, bandwidth
-   prediction, and network slicing, among others.  This document
-   introduces a new abstraction called Bottleneck Structure Graph (BSG)
-   and the necessary requirements to integrate it into the ALTO
-   standard.
+   Traffic Optimization (ALTO) protocol to support bottleneck structures
+   as an efficient representation of the state of a network.  Bottleneck
+   structures are efficient computational graphs that allow network
+   operators and application service providers to optimize application
+   performance in a variety of communication problems including routing,
+   flow control, flow scheduling, bandwidth prediction, and network
+   slicing, among others.  This document introduces a new abstraction
+   called Bottleneck Structure Graph (BSG) and the necessary
+   requirements to integrate it into the ALTO standard.
 
 About This Document
 
@@ -1377,7 +1376,7 @@ Table of Contents
               2015.
 
    [FLOWDIR]  Pujol, E., Poese, I., Zerwas, J., Smaragdakis, G., and A.
-              Feldmann, "Steering Hyper-Giants’ Traffic at Scale", ACM
+              Feldmann, "Steering Hyper-Giants' Traffic at Scale", ACM
               CoNEXT , 2019.
 
    [G2-SC]    Amsel, N., Ros-Giralt, J., Yellamraju, S., von Hoffe, B.,
@@ -1411,7 +1410,7 @@ Table of Contents
               Routing in Multi-cell Mobile Edge Computing Networks",
               n.d..
 
-   [LORENZ]   Lorenz, E., "Does the flap of a butterfly’s wings in
+   [LORENZ]   Lorenz, E., "Does the flap of a butterfly's wings in
               Brazil set off a tornado in Texas?", American Association
               for the Advancement of Science, 139th Meeting , 1972.
 
