@@ -99,24 +99,18 @@ Table of Contents
      4.6.  Training Gigantic Neural Networks onto Data Centers and
            Planet-Scale Networks
      4.7.  5G Network Slicing
-   5.  Example of Application Layer Traffic Optimization using
+   5.  Example: Application Layer Traffic Optimization using
            Bottleneck Structures
    6.  Requirements
      6.1.  Requirement 1: Bottleneck Structure Graph (BSG) Abstraction
      6.2.  Requirement 2: Information Received from the Network
      6.3.  Requirement 3: Information Passed to the Application
      6.4.  Requirement 4: Features Needed to Support the Use Cases
-   7.  Bottleneck Structure Graph Extension: Overview
-   8.  Specification: Basic Data Types
-   9.  Specification: Service Extensions
-   10. Compatibility with Other ALTO Services and Extensions
-   11. General Discussions
-   12. Examples
-   13. Security Considerations
-   14. IANA Considerations
-   15. References
-     15.1.  Normative References
-     15.2.  Informative References
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -941,7 +935,7 @@ Table of Contents
 
    TOBECOMPLETED
 
-5.  Example of Application Layer Traffic Optimization using Bottleneck
+5.  Example: Application Layer Traffic Optimization using Bottleneck
     Structures
 
    In this section we provide an example illustrating how bottleneck
@@ -1278,41 +1272,24 @@ Table of Contents
    achievable with a good implementation of the bottleneck structure
    algorithm [G2-TREP].
 
-7.  Bottleneck Structure Graph Extension: Overview
+7.  Security Considerations
 
-   TODO
+   Future versions of this document may extend the base ALTO protocol,
+   so the Security Considerations [RFC7285] of the base ALTO protocol
+   fully apply when this extension is provided by an ALTO server.
 
-8.  Specification: Basic Data Types
+   TOBECOMPLETED
 
-   TODO
+8.  IANA Considerations
 
-9.  Specification: Service Extensions
+   Future versions of this document could register new entries to the
+   ALTO Cost Metric Registry, the ALTO Cost Mode Registry, the ALTO
+   Domain Entity Type Registry and the ALTO Entity Property Type
+   Registry.
 
-   TODO
+9.  References
 
-10.  Compatibility with Other ALTO Services and Extensions
-
-   TODO
-
-11.  General Discussions
-
-   TODO
-
-12.  Examples
-
-   TODO
-
-13.  Security Considerations
-
-   TODO
-
-14.  IANA Considerations
-
-   TODO
-
-15.  References
-
-15.1.  Normative References
+9.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1339,7 +1316,7 @@ Table of Contents
               Cost Calendar", RFC 8896, DOI 10.17487/RFC8896, November
               2020, <https://www.rfc-editor.org/rfc/rfc8896>.
 
-15.2.  Informative References
+9.2.  Informative References
 
    [B4-SIGCOMM]
               "B4: Experience with a Globally-Deployed Software Defined
