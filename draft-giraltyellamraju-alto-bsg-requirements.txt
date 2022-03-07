@@ -104,9 +104,6 @@ Table of Contents
      4.3.  Application Performance Optimization Through AI Modeling
      4.4.  Optimal Joint Routing and Congestion Control
      4.5.  Service Placement for Edge Computing
-     4.6.  Training Gigantic Neural Networks onto Data Centers and
-           Planet-Scale Networks
-     4.7.  5G Network Slicing
    5.  Example: Application Layer Traffic Optimization using
            Bottleneck Structures
    6.  Requirements
@@ -926,20 +923,6 @@ Table of Contents
    passing the information of the possible locations where it can be
    placed, and the ALTO server could return an ordered list of the
    locations and their expected performance.
-
-4.6.  Training Gigantic Neural Networks onto Data Centers and Planet-
-      Scale Networks
-
-   TODO
-
-4.7.  5G Network Slicing
-
-   Bottleneck structures can also be used by network operators and
-   application service providers to design optimized network slices.
-   See [G2-SIGCOMM] for examples on how bottleneck structures can be
-   used to design network slices in data centers.
-
-   TOBECOMPLETED
 
 5.  Example: Application Layer Traffic Optimization using Bottleneck
     Structures
